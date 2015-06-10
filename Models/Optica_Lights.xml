@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+
+<!--
+Edgley OA-7 Optica
+Gary R. Neely 'Buckaroo', Jan 2011
+-->
+
+
+<PropertyList>
+
+<path>mesh_lights.ac</path>
+
+
+<!-- Special Shaders -->
+
+<animation>
+  <type>noshadow</type>
+  <object-name>LampTail</object-name>
+  <object-name>LampTailOn</object-name>
+  <object-name>LampNavL</object-name>
+  <object-name>LampNavLOn</object-name>
+  <object-name>LampNavR</object-name>
+  <object-name>LampNavROn</object-name>
+  <object-name>GlowNavL</object-name>
+  <object-name>GlowNavR</object-name>
+  <object-name>GlowTail</object-name>
+  <object-name>GlowLanding</object-name>
+  <object-name>GlowTaxi</object-name>
+</animation>
+
+
+<!-- Animations -->
+
+<animation>
+  <type>select</type>
+  <object-name>LampTailOn</object-name>
+  <object-name>GlowTail</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[1]</property>
+  </condition>
+</animation>
+<animation>
+  <type>select</type>
+  <object-name>LampTail</object-name>
+  <condition>
+    <not><property>sim/multiplay/generic/int[1]</property></not>
+  </condition>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LampNavLOn</object-name>
+  <object-name>LampNavROn</object-name>
+  <object-name>GlowNavL</object-name>
+  <object-name>GlowNavR</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[2]</property>
+  </condition>
+</animation>
+<animation>
+  <type>select</type>
+  <object-name>LampNavL</object-name>
+  <object-name>LampNavR</object-name>
+  <condition>
+    <not><property>sim/multiplay/generic/int[2]</property></not>
+  </condition>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowNavL</object-name>
+  <center>
+   <x-m>3.101</x-m>
+   <y-m>-6.048</y-m>
+   <z-m>0.214</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0.4</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowNavR</object-name>
+  <center>
+   <x-m>3.101</x-m>
+   <y-m>6.048</y-m>
+   <z-m>0.214</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0.4</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowTail</object-name>
+  <center>
+   <x-m>7.958</x-m>
+   <y-m>1.186</y-m>
+   <z-m>1.450</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+  <power>2</power>
+  <factor>1</factor>
+  <offset>0.2</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+
+<animation>
+  <type>select</type>
+  <object-name>GlowLanding</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[3]</property>
+  </condition>
+</animation>
+<animation>
+  <type>select</type>
+  <object-name>GlowTaxi</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[4]</property>
+  </condition>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowLanding</object-name>
+  <center>
+    <x-m>0</x-m>
+    <y-m>-0.201</y-m>
+    <z-m>-0.615</z-m>
+  </center>
+  <axis>
+    <x>-0.996</x>
+    <y>0</y>
+    <z>-0.087</z>
+  </axis>
+  <power>6</power>
+  <factor>1</factor>
+  <offset>0</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.06</min>
+  <max>1</max>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowTaxi</object-name>
+  <center>
+    <x-m>0.026</x-m>
+    <y-m>-0.201</y-m>
+    <z-m>-0.759</z-m>
+  </center>
+  <axis>
+    <x>-0.996</x>
+    <y>0</y>
+    <z>-0.087</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.06</min>
+  <max>1</max>
+</animation>
+
+
+</PropertyList>
+

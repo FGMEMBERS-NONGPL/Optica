@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+<electrical>
+  <battery-charge type="float">0</battery-charge>
+  <starter-used type="int">0</starter-used>
+  <outputs>
+    <kx-155-1 type="float">0</kx-155-1>
+    <kx-155-2 type="float">0</kx-155-2>
+    <kr-87 type="float">0</kr-87>
+    <kt-76c type="float">0</kt-76c>
+    <fuelpump type="float">0</fuelpump>
+  </outputs>
+</electrical>
+
+</PropertyList>
+

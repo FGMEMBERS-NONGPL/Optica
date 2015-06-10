@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+
+<!--
+components:
+  type (battery|alternator|external|output)
+  name
+  volts (required for suppliers)
+  prop 1 ... prop n
+  source-prop (required for alternator types)
+  source-min (required for alternator type)
+
+connectors:
+  input
+  output
+  switch 1 ... switch n (all optional)
+  variable (optional, defaults to false)
+  scaled (optional, defaults to false)
+-->
+
+
+<PropertyList>
+
+<electrical>
+
+  <!-- Include the following empty path to disable the default electrical system -->
+
+  <path></path>
+
+<!-- Components -->
+
+  <component>
+    <kind type="string">battery</kind>
+    <name type="string">Battery</name>
+    <volts type="float">24</volts>
+    <prop type="string">/systems/electrical/suppliers/battery[0]</prop>
+  </component>
+
+  <component>
+    <kind type="string">alternator</kind>
+    <name type="string">Alternator</name>
+    <volts type="float">28</volts>
+    <prop type="string">/systems/electrical/suppliers/alternator[0]</prop>
+    <source-prop type="string">/engines/engine[0]/rpm</source-prop>
+    <source-min type="float">600</source-min>
+  </component>
+  
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Primary Bus</name>
+    <prop type="string">/systems/electrical/outputs/bus-dc</prop>
+    <prop type="string">/systems/electrical/outputs/adf</prop>
+    <prop type="string">/systems/electrical/outputs/nav[0]</prop>
+    <prop type="string">/systems/electrical/outputs/nav[1]</prop>
+    <prop type="string">/systems/electrical/outputs/oat</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Avionics Bus</name>
+    <prop type="string">/systems/electrical/outputs/bus-avionics</prop>
+    <prop type="string">/systems/electrical/outputs/encoder</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Starter</name>
+    <prop type="string">/systems/electrical/outputs/starter[0]</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Turn Coordinator Power</name>
+    <prop type="string">/systems/electrical/outputs/turn-coordinator</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Panel Lights</name>
+    <prop type="string">/systems/electrical/outputs/panel-norm</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">Fuel Pump</name>
+    <prop type="string">/systems/electrical/outputs/fuelpump</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">KX-155-1</name>
+    <prop type="string">/systems/electrical/outputs/kx-155-1</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">KX-155-2</name>
+    <prop type="string">/systems/electrical/outputs/kx-155-2</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">KR-87</name>
+    <prop type="string">/systems/electrical/outputs/kr-87</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">KT-76c</name>
+    <prop type="string">/systems/electrical/outputs/kt-76c</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">lights_nav</name>
+    <prop type="string">/systems/electrical/outputs/lights-nav</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">lights_tail</name>
+    <prop type="string">/systems/electrical/outputs/lights-tail</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">lights_taxi</name>
+    <prop type="string">/systems/electrical/outputs/lights-taxi</prop>
+  </component>
+
+  <component>
+    <kind type="string">output</kind>
+    <name type="string">lights_landing</name>
+    <prop type="string">/systems/electrical/outputs/lights-landing</prop>
+  </component>
+
+<!-- Connectors -->
+
+  <connector>
+    <input type="string">Battery</input>
+    <output type="string">Primary Bus</output>
+    <switch type="string">/controls/switches/battery</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Alternator</input>
+    <output type="string">Primary Bus</output>
+    <switch type="string">/controls/switches/alternator</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">Avionics Bus</output>
+    <switch type="string">/controls/switches/avionics</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">Starter</output>
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">Turn Coordinator Power</output>
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">Fuel Pump</output>
+    <switch type="string">/controls/switches/fuelpump</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">lights_taxi</output>
+    <switch type="string">/controls/lighting/taxi</switch>
+    <variable type="int">1</variable> <!-- Propagate on/off state only -->
+  </connector>
+
+  <connector>
+    <input type="string">Primary Bus</input>
+    <output type="string">lights_landing</output>
+    <switch type="string">/controls/lighting/landing</switch>
+    <variable type="int">1</variable> <!-- Propagate on/off state only -->
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">Panel Lights</output>
+    <switch type="string">/controls/lighting/panel-norm</switch>
+    <variable type="int">1</variable>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">KX-155-1</output>
+    <switch type="string">/controls/switches/kx-155-1</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">KX-155-2</output>
+    <switch type="string">/controls/switches/kx-155-2</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">KR-87</output>
+    <switch type="string">/controls/switches/kr-87</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">KT-76c</output>
+    <switch type="string">/controls/switches/kt-76c</switch>
+    <variable type="int">1</variable>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">lights_nav</output>
+    <switch type="string">/controls/lighting/nav</switch>
+  </connector>
+
+  <connector>
+    <input type="string">Avionics Bus</input>
+    <output type="string">lights_tail</output>
+    <switch type="string">/controls/lighting/tail</switch>
+  </connector>
+
+</electrical>
+
+</PropertyList>

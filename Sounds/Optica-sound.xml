@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<!--
+Edgley Optica
+Gary R. Neely 'Buckaroo', Dec 2011
+-->
+
+<PropertyList>
+
+ <fx>
+
+<!-- These have a really bad transition to engine running. Needs work. -->
+
+<!--
+  <crank>
+   <name>engstart</name>
+   <path>Sounds/engstart.wav</path>
+   <property>/engines/engine/cranking</property>
+   <volume>
+    <offset>0.4</offset>
+   </volume>
+   <position>
+     <x>3.5</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+  </crank>
+-->
+  <crank>
+   <name>crank</name>
+   <mode>looped</mode>
+   <path>Sounds/cranking.wav</path>
+   <condition>
+    <property>/engines/engine/cranking</property>
+    <not>
+     <property>/engines/engine/running</property>
+    </not>
+   </condition>
+   <volume>
+    <offset>0.5</offset>
+   </volume>
+   <position>
+     <x>3.5</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+  </crank>
+<!--
+  <crank>
+   <name>cough</name>
+   <path>Sounds/coughing.wav</path>
+   <property>/engines/engine/running</property>
+   <volume>
+    <offset>0.3</offset>
+   </volume>
+   <position>
+     <x>3.5</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+  </crank>
+-->
+
+<!--
+Engine sound taken from my Velocity, more or less the same engine, though the Optica is likely
+a bit quieter due to the cabin isolation from the engine pod.
+
+Engine volume is based on:
+  manifold pressure
+  ground reflection (sound diminishes with distance to ground)
+Pitch is affected by:
+  RPM
+  ground replection
+See Optica.nas for how this is calculated.
+I don't change volume based on view; it's too subjective and messes with other sound
+calculations too much.
+Note that a propeller sound isn't used; the IO540 sound is a real engine+prop sound.
+-->
+
+  <engine>
+   <name>engine</name>
+   <mode>looped</mode>
+   <path>Aircraft/Optica/Sounds/IO540MonoLoop2b.wav</path>
+   <property>/engines/engine/running</property>
+   <volume>
+     <property>/sim/Optica/sound/volume-engine</property>
+     <factor>1</factor>
+     <offset>0</offset>
+   </volume>
+   <pitch>
+     <property>sim/Optica/sound-agl</property>
+     <factor>-0.005</factor>
+     <offset>1</offset>
+   </pitch>
+   <pitch>
+     <property>/engines/engine/rpm</property>
+     <factor>0.00037</factor>
+     <min>0.6</min>
+     <max>1.0</max>
+     <offset>0</offset>
+   </pitch>
+   <position>
+     <x>3.5</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+  </engine>
+
+<!-- FG default rumble, but drop the volume and make pitch dependent on rolling speed: -->
+
+  <rumble>
+   <name>rumble</name>
+   <mode>looped</mode>
+   <path>Sounds/rumble.wav</path>
+   <condition>
+    <and>
+      <greater-than>
+        <property>/velocities/groundspeed-kt</property>
+        <value>1</value>
+      </greater-than>
+      <or>
+        <property>/gear/gear[0]/wow</property>
+        <property>/gear/gear[1]/wow</property>
+        <property>/gear/gear[2]/wow</property>
+      </or>
+    </and>
+   </condition>
+   <volume>
+    <property>/velocities/groundspeed-kt</property>
+    <type>log</type>
+    <factor>0.15</factor>
+   </volume>
+   <pitch>
+    <property>/velocities/groundspeed-kt</property>
+    <type>log</type>
+    <factor>0.5</factor>
+    <offset>1.2</offset>
+   </pitch>
+  </rumble>
+
+  <squeal>
+   <name>squeal1</name>
+   <path>Sounds/squeal.wav</path>
+   <condition>
+    <or>
+     <property>/gear/gear[0]/wow</property>
+    </or>
+   </condition>
+   <volume>
+    <property>/velocities/speed-down-fps</property>
+    <factor>1</factor>
+    <max>1.0</max>
+   </volume>
+  </squeal>
+  <squeal>
+   <name>squeal2</name>
+   <path>Sounds/squeal.wav</path>
+   <condition>
+    <or>
+     <property>/gear/gear[1]/wow</property>
+    </or>
+   </condition>
+   <volume>
+    <property>/velocities/speed-down-fps</property>
+    <factor>1</factor>
+    <max>1.0</max>
+   </volume>
+  </squeal>
+  <squeal>
+   <name>squeal3</name>
+   <path>Sounds/squeal.wav</path>
+   <condition>
+    <or>
+     <property>/gear/gear[2]/wow</property>
+    </or>
+   </condition>
+   <volume>
+    <property>/velocities/speed-down-fps</property>
+    <factor>1</factor>
+    <max>1.0</max>
+   </volume>
+  </squeal>
+ 
+  <flap>
+   <name>flaps</name>
+   <mode>in-transit</mode>
+   <path>Sounds/flaps.wav</path>
+   <property>/surface-positions/flap-pos-norm</property>
+   <volume>
+    <factor>0.5</factor>
+   </volume>
+   <pitch>
+    <factor>0.4</factor>
+   </pitch>
+   <position>
+     <x>2.5</x>
+     <y>0</y>
+     <z>0</z>
+   </position>
+  </flap>
+
+<!--
+I'm not happy with this wind noise; to me it just sounds
+like electronic buzzing. Something would be nice and I might
+mess with this later, but typically you'd have headphones on
+and the engine sound would drown this out anyway, and how often
+will you fly dead-stick?
+
+  <wind>
+   <name>wind</name>
+   <mode>looped</mode>
+   <path>Sounds/wind.wav</path>
+   <property>/velocities/airspeed-kt</property>
+   <volume>
+    <property>/position/altitude-ft</property>
+    <factor>-0.000015</factor>
+    <offset>1.0</offset>
+    <min>0.1</min>
+    <max>1.0</max>
+   </volume>
+   <volume>
+     <property>/velocities/airspeed-kt</property>
+     <factor>0.0015</factor>
+     <min>0.03</min>
+     <max>0.25</max>
+   </volume>
+   <pitch>
+    <property>/velocities/airspeed-kt</property>
+    <factor>0.0035</factor>
+    <offset>0.7</offset>
+   </pitch>
+  </wind>
+-->
+
+  <stall>
+   <name>stall</name>
+   <mode>looped</mode>
+   <path>Sounds/stall.wav</path>
+   <condition>
+     <property>/sim/alarms/stall-warning</property>
+   </condition>
+   <volume>
+    <property>/sim/alarms/stall-warning</property>
+    <max>1.0</max>
+   </volume>
+   <reference-dist>10.0</reference-dist>
+   <max-dist>20.0</max-dist>
+  </stall>
+
+<!--
+Need some better door sounds than these.
+Currently disabled; not worth the annoying start-up sounds when the properties are initialized.
+-->
+
+<!--
+  <door>
+   <name>close right door</name>
+   <mode>once</mode>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/right/position-norm</property>
+     <value>0</value>
+    </equals>
+   </condition>
+   <volume>
+    <factor>0.3</factor>
+   </volume>
+   <pitch>
+    <factor>0.1</factor>
+   </pitch>
+   <position>
+    <x>1.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+   </position>
+  </door>
+
+  <door>
+   <name>close left door</name>
+   <mode>once</mode>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/left/position-norm</property>
+     <value>0</value>
+    </equals>
+   </condition>
+   <volume>
+    <factor>0.3</factor>
+   </volume>
+   <pitch>
+    <factor>0.1</factor>
+   </pitch>
+   <position>
+    <x>1.0</x>
+    <y>1.0</y>
+    <z>0.0</z>
+   </position>
+  </door>
+-->
+
+</fx>
+ 
+</PropertyList>

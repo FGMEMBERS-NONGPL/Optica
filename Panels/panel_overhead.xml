@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<!--
+Edgley OA-7 Optica
+Gary R. Neely 'Buckaroo', Jan 2011
+-->
+
+<PropertyList>
+
+<name>Column</name>
+<background>Aircraft/Optica/Panels/transparent-bg.rgb</background>
+<w>64</w>
+<h>32</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>32</x>
+    <y>16</y>
+    <w>64</w>
+    <h>32</h>
+    <w-base>64</w-base>
+    <h-base>32</h-base>
+
+    <actions>
+
+<!-- OAT -->
+
+      <action>
+        <name>OAT</name>
+        <button>0</button>
+        <x>25</x>
+        <y>-5</y>
+        <w>4</w>
+        <h>5</h>
+        <binding>
+          <condition>
+            <property>/systems/electrical/outputs/oat</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/oat/mode</property>
+          <step>1</step>
+          <min>0</min>
+          <max>3</max> <!-- max should be 2, but property-adjust doeesn't work quite right -->
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+<!-- Lighting -->
+
+      <action>
+        <name>Nav</name>
+        <button>0</button>
+        <x>-12</x>
+        <y>-10</y>
+        <w>4</w>
+        <h>6</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/nav</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>Tail</name>
+        <button>0</button>
+        <x>-7</x>
+        <y>-10</y>
+        <w>4</w>
+        <h>6</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/tail</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>Landing</name>
+        <button>0</button>
+        <x>-2</x>
+        <y>-10</y>
+        <w>4</w>
+        <h>6</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/landing</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>Taxi</name>
+        <button>0</button>
+        <x>3</x>
+        <y>-10</y>
+        <w>4</w>
+        <h>6</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/taxi</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>INOP1</name>
+        <button>0</button>
+        <x>8</x>
+        <y>-10</y>
+        <w>4</w>
+        <h>6</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/inop1</property>
+        </binding>
+      </action>
+
+<!-- Panel lights knob hotspots -->
+
+      <action>
+        <name>panel inc</name>
+        <button>0</button>
+        <x>-11</x>
+        <y>2</y>
+        <w>8</w>
+        <h>11</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/panel-norm</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>panel dec</name>
+        <button>1</button>
+        <x>-11</x>
+        <y>2</y>
+        <w>8</w>
+        <h>11</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/lighting/panel-norm</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>

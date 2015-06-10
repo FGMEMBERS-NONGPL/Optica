@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+
+<!--
+CDI loosely based on the Bendix/King KI-203
+Gary "Buckaroo" Neely
+-->
+
+<PropertyList>
+
+<path>cdi.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>CompassRose</object-name>
+  <object-name>NeedleCourse</object-name>
+  <object-name>NeedleDeviation</object-name>
+  <object-name>ToFlag</object-name>
+  <object-name>FromFlag</object-name>
+  <object-name>NavFlag</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.4</green>
+    <blue>0.2</blue>
+    <factor-prop>/systems/electrical/outputs/panel-norm</factor-prop>
+  </emission>
+</animation>
+<animation>
+  <type>material</type>
+  <object-name>KnobOBS</object-name>
+  <emission>
+    <red>0.2</red>
+    <green>0.1</green>
+    <blue>0.05</blue>
+    <factor-prop>/systems/electrical/outputs/panel-norm</factor-prop>
+  </emission>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>CompassRose</object-name>
+  <object-name>NavFlag</object-name>
+  <object-name>ToFlag</object-name>
+  <object-name>FromFlag</object-name>
+  <object-name>NeedleCourse</object-name>
+  <object-name>NeedleDeviation</object-name>
+  <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+  <axis>
+    <x>1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>NavFlag</object-name>
+  <object-name>ToFlag</object-name>
+  <object-name>FromFlag</object-name>
+  <object-name>NeedleCourse</object-name>
+  <object-name>NeedleDeviation</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>NeedleDeviation</object-name>
+  <property>/instrumentation/nav/heading-needle-deflection</property>
+  <interpolation>
+    <entry><ind>-999.0</ind><dep>-13</dep></entry>
+    <entry><ind>  -2.5</ind><dep>-13</dep></entry>
+    <entry><ind>   0.0</ind><dep>  0</dep></entry>
+    <entry><ind>   2.5</ind><dep> 13</dep></entry>
+    <entry><ind> 999.0</ind><dep> 13</dep></entry>
+  </interpolation>
+  <center>
+    <x-m>-0.069</x-m>
+    <y-m>0</y-m>
+    <z-m>0</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ToFlag</object-name>
+  <condition>
+    <equals>
+      <property>instrumentation/nav/to-flag</property>
+      <value>true</value>
+    </equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>FromFlag</object-name>
+  <condition>
+    <equals>
+      <property>instrumentation/nav/from-flag</property>
+      <value>true</value>
+    </equals>
+  </condition>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>NavFlag</object-name>
+  <condition>
+<!--
+    <not>
+    <and>
+      <property>/instrumentation/nav[0]/nav-loc</property>
+      <property>/instrumentation/nav[0]/in-range</property>
+    </and>
+    </not>
+-->
+    <not><property>/instrumentation/nav[0]/in-range</property></not>
+  </condition>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>KnobOBS</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <factor>2</factor>
+  <center>
+    <x-m>0</x-m>
+    <y-m>-0.031</y-m>
+    <z-m>-0.031</z-m>
+  </center>
+  <axis>
+    <x>-1</x>
+    <y>0</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>KnobOBS</object-name>
+  <action>
+    <button>3</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/radials/selected-deg</property>
+      <step>1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+  <action>
+    <button>4</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/radials/selected-deg</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+</PropertyList>

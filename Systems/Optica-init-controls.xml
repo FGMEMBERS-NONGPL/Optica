@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<engines>
+  <engine n="0">
+    <throttle-fdm type="double">0</throttle-fdm>
+  </engine>
+</engines>
+
+<gear>
+  <brake-parking type="double">1.0</brake-parking>
+</gear>
+
+<flight>
+  <!-- Inboard wing section fixed flaps, approximating 10 degrees -->
+  <flaps-fixed type="double">0.2</flaps-fixed >
+</flight>
+
+<fuel>
+  <selected-tank type="int">-1</selected-tank>
+</fuel>
+
+<lighting>
+  <tail type="int">0</tail>
+  <nav type="int">0</nav>
+  <landing type="int">0</landing>
+  <taxi type="int">0</taxi>
+  <inop1 type="int">0</inop1>
+  <panel-norm type="double">0</panel-norm>
+</lighting>
+
+<switches>
+  <flaps type="int">0</flaps>
+  <friction type="int">1</friction>
+  <fuelpump type="int">0</fuelpump>
+  <avionics type="int">0</avionics>
+  <alternator type="int">0</alternator>
+  <battery type="int">0</battery>
+  <ignition type="int">0</ignition>
+  <inop2 type="int">0</inop2>
+  <kma-24 type="int">0</kma-24>
+  <kx-155-1 type="int">0</kx-155-1>
+  <kx-155-2 type="int">0</kx-155-2>
+  <kr-87 type="int">0</kr-87>
+  <kt-76c type="int">0</kt-76c>
+  <kn-62a type="int">0</kn-62a>
+  <kn-62a-mode type="int">1</kn-62a-mode>
+  <pitotheat type="int">0</pitotheat>
+</switches>
+
+</PropertyList>
+

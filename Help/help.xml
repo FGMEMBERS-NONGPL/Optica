@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<text>
+ Edgley OA-7 Optica
+
+ Vr    50 kts (takeoff at 10 deg flaps)
+ V2    55 kts
+ Vs0   38 kts
+ Vno   110 (?)
+ VA    113
+ Vne   140 kts
+ Vfe   1-10 deg flaps, to 110 kits
+       11-50 deg flaps, to 85 kts
+
+Quick Start
+
+Turn on the battery
+Set fuel to the left or right tank
+Turn on the fuel pump
+When fuel pressure comes up, use the starter switch to start the engine
+Turn on alternator switch
+Turn on avionics
+Set your altimeter to the proper pressure
+Check your heading gyros and set as necessary
+Use the trim wheel to set elevator trim to TO position
+Engage flaps to the first position marker or 10%
+Release parking break when ready
+
+For much more information, see README.txt
+</text>
+
+</PropertyList>

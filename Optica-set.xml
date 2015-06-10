@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<!--
+Edgley OA-7 Optica
+
+Nov 2010	Gary "Buckaroo" Neely
+-->
+
+<PropertyList>
+
+<sim include="Systems/Optica-views.xml">
+  <description>Optica</description>
+  <author>Gary Neely</author>
+
+  <flight-model>yasim</flight-model>
+  <aero>Optica-yasim</aero>
+  <fuel-fraction>0.6</fuel-fraction> <!-- Determines initial fuel load -->
+
+
+<startup>
+<splash-texture>Aircraft/Optica/Splash.png</splash-texture>
+</startup>
+
+
+  <model>
+    <path>Aircraft/Optica/Models/Optica.xml</path>
+    <livery>
+      <file type="string">White</file>
+    </livery>
+  </model> 
+
+  <systems include="Systems/Optica-electrical-new.xml">
+  </systems>
+
+  <sound>
+    <path>Aircraft/Optica/Sounds/Optica-sound.xml</path>
+  </sound>
+
+  <help include="Help/help.xml"/>
+
+  <instrumentation>
+    <path>Aircraft/Optica/Systems/Optica-instrumentation.xml</path>
+  </instrumentation>
+
+  <!-- Temporary flap detents. The real Optica has no detents. -->
+  <flaps>
+    <setting>0.0</setting>
+    <setting>0.2</setting>
+    <setting>0.4</setting>
+    <setting>0.6</setting>
+    <setting>0.8</setting>
+    <setting>1.0</setting>
+  </flaps>
+
+  <weight n="0">
+    <name>Crew</name>
+    <weight-lb>250</weight-lb> 
+    <max-lb>500</max-lb>
+    <min-lb>170</min-lb>
+  </weight>
+  <weight n="1">
+    <name>Nose Ballast</name>
+    <weight-lb>0</weight-lb> 
+    <max-lb>80</max-lb>
+    <min-lb>0</min-lb>
+  </weight>
+  <weight n="2">
+    <name>Tail Ballast</name>
+    <weight-lb>0</weight-lb> 
+    <max-lb>40</max-lb>
+    <min-lb>0</min-lb>
+  </weight>
+
+  <menubar>
+    <default>
+      <menu n="100">
+        <label>Optica</label>
+        <item>
+          <label>Select Livery</label>
+          <binding>
+            <command>nasal</command>
+            <script>aircraft.livery.dialog.toggle();</script>
+          </binding>
+        </item>
+        <item>
+          <label>Fast Engine Startup</label>
+          <binding> 
+            <command>nasal</command>
+            <script>Optica.QuickStart();</script>
+          </binding>
+        </item>
+        <item>
+          <label>Left Door</label>
+          <binding>
+            <command>nasal</command>
+            <script>Optica.Optica_doors_left();</script>
+          </binding>
+        </item>
+        <item>
+          <label>Right Door</label>
+          <binding>
+            <command>nasal</command>
+            <script>Optica.Optica_doors_right();</script>
+          </binding>
+        </item>
+        <item>
+          <label>Toggle Shadow</label>
+          <binding>
+            <command>property-toggle</command>
+            <property>/sim/Optica/use-shadow</property>
+          </binding>
+        </item>
+        <item>
+          <label>Set Comm 1 to 122.75</label>
+          <binding>
+            <command>property-assign</command>
+            <property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+            <value type="double">122.75</value>
+          </binding>
+        </item>
+      </menu>
+    </default>
+  </menubar>
+
+  <!-- These values are used to pass properties over MP -->
+  <multiplay>
+    <generic>
+      <float n="0" alias="/controls/doors/left/position-norm"/>
+      <float n="1" alias="/controls/doors/right/position-norm"/>
+      <!-- <float n="3" alias="/sim/model/lighting/beacon"/> --> <!-- Doesn't work, but reserve float[3] for this; see Optica.nas -->
+      <int n="0" alias="/controls/lighting/beacon"/> <!-- Currently unused -->
+      <int n="1" alias="/systems/electrical/outputs/lights-tail"/>
+      <int n="2" alias="/systems/electrical/outputs/lights-nav"/>
+      <int n="3" alias="/systems/electrical/outputs/lights-landing"/>
+      <int n="4" alias="/systems/electrical/outputs/lights-taxi"/>
+    </generic>
+  </multiplay>
+
+  <Optica>
+    <use-shadow type="bool">1</use-shadow>
+    <sound-agl type="float">0</sound-agl>
+    <sound-volume type="float">0</sound-volume>
+    <engine-checks type="bool">false</engine-checks>
+    <engine-warns type="bool">false</engine-warns>
+    <sound>
+      <volume-engine type="float">0</volume-engine>
+    </sound>
+  </Optica>
+
+</sim>
+
+<engines>
+  <engine n="0">
+    <mp-inhg type="float">0.0</mp-inhg>
+    <fuel-flow-pph type="float">0.0</fuel-flow-pph>
+    <cyltempc type="float">15.0</cyltempc>
+    <cyltempc-biased type="float">15.0</cyltempc-biased>
+    <oiltempc type = "float">15.0</oiltempc>
+    <oil-visc type = "float">1</oil-visc>
+    <oil-press type = "float">0.0</oil-press>
+    <fuel-press type ="float">0.0</fuel-press>
+    <fuel-flow-adj type ="float">0.0</fuel-flow-adj>
+    <strain type="int">0</strain>
+    <strain-clk-rev type="float">0</strain-clk-rev>
+    <strain-clk-temp type="float">0</strain-clk-temp>
+    <overrev type="int">0</overrev>
+    <overheat type="int">0</overheat>
+<!-- for engine testing:-->
+    <cyl-dt type="float">0.0</cyl-dt>
+    <cyl-dte type="float">0.0</cyl-dte>
+    <cyl-dtt type="float">0.0</cyl-dtt>
+    <cyl-dta type="float">0.0</cyl-dta>
+    <cyl-dtm type="float">0.0</cyl-dtm>
+  </engine>
+</engines>
+
+<controls include="Systems/Optica-init-controls.xml"/>
+
+<instrumentation include="Systems/Optica-init-instrumentation.xml"/>
+
+<systems include="Systems/Optica-init-systems.xml"/>
+
+<input>
+  <keyboard>
+    <!-- Replace default Mixture controls, delta was too small for quick tests -->
+    <key n="77">
+      <name>M</name>
+      <desc>Lean Mixture</desc>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.Optica_mixture(0);</script>
+      </binding>
+    </key>
+    <key n="109">
+      <name>m</name>
+      <desc>Richen Mixture</desc>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.Optica_mixture(1);</script>
+      </binding>
+    </key>
+<!--
+    <key n="91">
+      <name>[</name>
+      <desc>Decrease flaps.</desc>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/flaps</property>
+        <value>1</value>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.Optica_flaps(0);</script>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/flaps</property>
+        <value>0</value>
+      </binding>
+      </mod-up>
+    </key>
+    <key n="93">
+      <name>]</name>
+      <desc>Increase flaps.</desc>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/flaps</property>
+        <value>-1</value>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.Optica_flaps(1);</script>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/flaps</property>
+        <value>0</value>
+      </binding>
+      </mod-up>
+    </key>
+-->
+    <key n="91">
+      <name>[</name>
+      <desc>Decrease flaps.</desc>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>controls.flapsDown(-1)</script>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>controls.flapsDown(0)</script>
+      </binding>
+      </mod-up>
+    </key>
+   
+    <key n="93">
+      <name>]</name>
+      <desc>Increase flaps.</desc>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>controls.flapsDown(1)</script>
+      </binding>
+      <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>controls.flapsDown(0)</script>
+      </binding>
+      </mod-up>
+    </key>
+
+    <key n="115">
+      <name>s</name>
+      <desc>Engine Starter</desc>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.starter_null();</script>
+      </binding>
+    </key>
+    <key n="123">
+      <name>{</name>
+      <desc>Decrease Magneto</desc>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.ignition_switch(-1,0);</script>
+      </binding>
+    </key>
+    <key n="125">
+      <name>}</name>
+      <desc>Increase Magneto</desc>
+      <binding>
+        <command>nasal</command>
+        <script>Optica.ignition_switch(1,0);</script>
+      </binding>
+    </key>
+  </keyboard>
+</input>
+
+<nasal>
+  <Optica>
+    <file>Aircraft/Optica/Nasal/Electrical.nas</file>
+    <file>Aircraft/Optica/Nasal/Optica_ammeter.nas</file>
+    <file>Aircraft/Optica/Nasal/rmi.nas</file>
+    <file>Aircraft/Optica/Nasal/kx155.nas</file>
+    <file>Aircraft/Optica/Nasal/kt76c.nas</file>
+    <file>Aircraft/Optica/Nasal/kn62a.nas</file>
+    <file>Aircraft/Optica/Nasal/Optica_fuel.nas</file>
+    <file>Aircraft/Optica/Nasal/Optica_engine.nas</file>
+    <file>Aircraft/Optica/Nasal/Optica.nas</file>
+  </Optica>
+</nasal>
+
+</PropertyList>
+    
+    
+    
+    
+    

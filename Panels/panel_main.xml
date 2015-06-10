@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+
+<!--
+Edgley OA-7 Optica
+Gary R. Neely 'Buckaroo', Jan 2011
+-->
+
+<PropertyList>
+
+<name>Column</name>
+<background>Aircraft/Optica/Panels/transparent-bg.rgb</background>
+<w>64</w>
+<h>64</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>32</x>
+    <y>32</y>
+    <w>64</w>
+    <h>64</h>
+    <w-base>64</w-base>
+    <h-base>64</h-base>
+
+    <actions>
+
+<!-- AI horizon adjustments -->
+
+      <action>
+        <name>AI inc</name>
+        <button>0</button>
+        <x>-2</x>
+        <y>11</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+          <step>0.1</step>
+          <min>-5</min>
+          <max>5</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>AI dec</name>
+        <button>1</button>
+        <x>-2</x>
+        <y>11</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/attitude-indicator/horizon-offset-deg</property>
+          <step>-0.1</step>
+          <min>-5</min>
+          <max>5</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- Altimeter inHG adjustment -->
+
+      <action>
+        <name>inHG dec</name>
+        <button>0</button>
+        <x>11</x>
+        <y>10</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/altimeter/setting-inhg</property>
+          <step>0.01</step>
+          <min>27.9</min>
+          <max>31.4</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>inHG inc</name>
+        <button>1</button>
+        <x>11</x>
+        <y>10</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/altimeter/setting-inhg</property>
+          <step>-0.01</step>
+          <min>27.9</min>
+          <max>31.4</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- HSI adjustments -->
+
+      <action>
+        <name>HSI Course inc</name>
+        <button>0</button>
+        <x>-11</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/radials/selected-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>HSI Course dec</name>
+        <button>1</button>
+        <x>-11</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/radials/selected-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+<!-- Bug not adjustable in the CDI, reserve for HSI version
+      <action>
+        <name>HSI Bug inc</name>
+        <button>0</button>
+        <x>5</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/heading-bug-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>HSI Bug dec</name>
+        <button>1</button>
+        <x>5</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/heading-bug-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+-->
+
+<!-- DG heading offset adjustment -->
+
+      <action>
+        <name>DG Hdg Inc</name>
+        <button>0</button>
+        <x>-11</x>
+        <y>-10</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>DG Hdg Dec</name>
+        <button>1</button>
+        <x>-11</x>
+        <y>-10</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+<!-- ADF adjustment -->
+
+      <action>
+        <name>ADF Inc</name>
+        <button>0</button>
+        <x>11</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/adf/rotation-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>ADF Dec</name>
+        <button>1</button>
+        <x>11</x>
+        <y>-32</y>
+        <w>6</w>
+        <h>6</h>
+        <repeatable>true</repeatable>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/adf/rotation-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>

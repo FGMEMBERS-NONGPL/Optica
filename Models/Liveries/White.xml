@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<sim>
+  <model>
+    <livery>
+      <name type="string">White</name>
+      <texture>txt_fuselage.rgb</texture>
+    </livery>
+    <wing>
+      <texture>txt_wing.rgb</texture>
+    </wing>
+    <empennage>
+      <texture>txt_empennage.rgb</texture>
+    </empennage>
+    <carpet>
+      <texture>txt_cockpit_carpet.rgb</texture>
+    </carpet>
+    <seats>
+      <texture>txt_cockpit_seats.rgb</texture>
+    </seats>
+  </model>
+</sim>
+</PropertyList>

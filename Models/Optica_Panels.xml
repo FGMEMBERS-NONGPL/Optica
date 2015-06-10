@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+
+<!--
+Edgley OA-7 Optica
+Gary R. Neely 'Buckaroo', Jan 2011
+-->
+
+<PropertyList>
+
+<!-- Main -->
+
+<panel>
+  <path>Aircraft/Optica/Panels/panel_main.xml</path>
+  <top-left>
+    <x-m>0.872</x-m>
+    <y-m>-0.416</y-m>
+    <z-m>0.056</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.940</x-m>
+    <y-m>-0.416</y-m>
+    <z-m>-0.197</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.940</x-m>
+    <y-m>-0.157</y-m>
+    <z-m>-0.197</z-m>
+  </bottom-right>
+</panel>
+
+<!-- Main Left Column Pod-->
+
+<panel>
+  <path>Aircraft/Optica/Panels/panel_podleft.xml</path>
+  <top-left>
+    <x-m>0.941</x-m>
+    <y-m>-0.351</y-m>
+    <z-m>-0.200</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.954</x-m>
+    <y-m>-0.351</y-m>
+    <z-m>-0.258</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.954</x-m>
+    <y-m>-0.291</y-m>
+    <z-m>-0.258</z-m>
+  </bottom-right>
+</panel>
+
+<!-- Main Column-->
+
+<panel>
+  <path>Aircraft/Optica/Panels/panel_column.xml</path>
+  <top-left>
+    <x-m>0.941</x-m>
+    <y-m>-0.291</y-m>
+    <z-m>-0.198</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>1.007</x-m>
+    <y-m>-0.291</y-m>
+    <z-m>-0.476</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>1.007</x-m>
+    <y-m>-0.112</y-m>
+    <z-m>-0.476</z-m>
+  </bottom-right>
+</panel>
+
+<!-- Overhead -->
+
+<panel>
+  <path>Aircraft/Optica/Panels/panel_overhead.xml</path>
+  <top-left>
+    <x-m>1.067</x-m>
+    <y-m>-0.129</y-m>
+    <z-m>0.506</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>1.044</x-m>
+    <y-m>-0.129</y-m>
+    <z-m>0.419</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>1.044</x-m>
+    <y-m>0.129</y-m>
+    <z-m>0.419</z-m>
+  </bottom-right>
+</panel>
+
+<!-- ThrottleQuad -->
+
+<panel>
+  <path>Aircraft/Optica/Panels/panel_throttlequad.xml</path>
+  <top-left>
+    <x-m>1.200</x-m>
+    <y-m>-0.280</y-m>
+    <z-m>-0.306</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>1.626</x-m>
+    <y-m>-0.280</y-m>
+    <z-m>-0.385</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>1.626</x-m>
+    <y-m>-0.155</y-m>
+    <z-m>-0.385</z-m>
+  </bottom-right>
+</panel>
+
+<!-- Avionics -->
+
+<!-- kma 24 -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kma24_panel.xml</path>
+  <top-left>
+    <x-m>0.876</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>0.052</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.885</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>0.020</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.885</x-m>
+    <y-m>0.005</y-m>
+    <z-m>0.020</z-m>
+  </bottom-right>
+</panel>
+
+<!-- kx155 NavComm 1 -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kx155_panel_1.xml</path>
+  <top-left>
+    <x-m>0.885</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>0.018</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.899</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.030</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.899</x-m>
+    <y-m>0.005</y-m>
+    <z-m>-0.030</z-m>
+  </bottom-right>
+</panel>
+
+<!-- kx155 NavComm 2 -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kx155_panel_2.xml</path>
+  <top-left>
+    <x-m>0.899</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.032</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.913</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.081</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.913</x-m>
+    <y-m>0.005</y-m>
+    <z-m>-0.081</z-m>
+  </bottom-right>
+</panel>
+
+<!-- kr87 ADF -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kr87_panel.xml</path>
+  <top-left>
+    <x-m>0.912</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.083</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.921</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.115</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.921</x-m>
+    <y-m>0.005</y-m>
+    <z-m>-0.115</z-m>
+  </bottom-right>
+</panel>
+
+<!-- kr76c transponder -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kt76c_panel.xml</path>
+  <top-left>
+    <x-m>0.922</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.117</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.932</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.156</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.932</x-m>
+    <y-m>0.005</y-m>
+    <z-m>-0.156</z-m>
+  </bottom-right>
+</panel>
+
+<!-- kn62a DME -->
+
+<panel>
+  <path>Aircraft/Optica/Models/Instruments/kn62a_panel.xml</path>
+  <top-left>
+    <x-m>0.933</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.156</z-m>
+  </top-left>
+  <bottom-left>
+    <x-m>0.941</x-m>
+    <y-m>-0.154</y-m>
+    <z-m>-0.188</z-m>
+   </bottom-left>
+  <bottom-right>
+    <x-m>0.941</x-m>
+    <y-m>0.005</y-m>
+    <z-m>-0.188</z-m>
+  </bottom-right>
+</panel>
+
+</PropertyList>
+
