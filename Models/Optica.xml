@@ -45,38 +45,6 @@ Gary R. Neely 'Buckaroo', Jan 2011
 </model>
 
 
-
-
-
-<!-- rembrandt glass -->
-
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Optica/Models/Effects/gazelle-glass.png</texture>
-    <object-name>Windows</object-name>
-      <object-name>DoorWinL</object-name>
-        <object-name>DoorWinR</object-name>
-        <object-name>IntWin</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
-    <object-name>Windows</object-name>
-        <object-name>DoorWinL</object-name>
-        <object-name>DoorWinR</object-name>
-        <object-name>IntWin</object-name>
-  </animation>
-
-
-
-
-
-
-
-
-
-
 <!-- LOD -->
 
 <animation>

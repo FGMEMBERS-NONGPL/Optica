@@ -15,12 +15,6 @@ Nov 2010	Gary "Buckaroo" Neely
   <aero>Optica-yasim</aero>
   <fuel-fraction>0.6</fuel-fraction> <!-- Determines initial fuel load -->
 
-
-<startup>
-<splash-texture>Aircraft/Optica/Splash.png</splash-texture>
-</startup>
-
-
   <model>
     <path>Aircraft/Optica/Models/Optica.xml</path>
     <livery>
